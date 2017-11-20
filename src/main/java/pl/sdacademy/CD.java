@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Data
@@ -42,5 +43,23 @@ public class CD {
 
     public void deleteTrack(int trackNumber){
         tracks.remove(trackNumber);
+    }
+
+    public int getLength(){
+        int sum = 0;
+        for (Track track :tracks) {
+            sum +=track.getLength();
+        }
+      return sum;
+
+//        tracks.stream().mapToInt(tracks ->tracks.getLength()).sum();
+    }
+
+    public int getTrackCount(){
+        return tracks.size();
+    }
+
+    public List<Track> findTracksByTitle(String title){
+        return tracks.stream().filter(track -> track.getTitle().contains(title)).collect(Collectors.toList());
     }
 }
