@@ -3,6 +3,9 @@ package pl.sdacademy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.Data;
+
+@Data
 
 public class Library {
 
@@ -58,4 +61,6 @@ public class Library {
     public void deleteCD(int index) {
         CDs.remove(index);
     }
+
+
 }

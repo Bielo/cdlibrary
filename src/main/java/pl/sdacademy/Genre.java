@@ -11,6 +11,10 @@ public enum Genre {
 
     private String name;
 
+   public String getName(){
+        return name;
+    }
+
     Genre(String name) {
         this.name = name;
     }

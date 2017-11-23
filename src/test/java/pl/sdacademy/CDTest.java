@@ -124,12 +124,26 @@ class CDTest {
 
     @Test
     void searchOnEmptyCDShouldReturnEmptyList(){
-
+        List<Track> tracks = cd.findTracksByTitle(TITLE);
+        assertTrue(tracks.isEmpty());
     }
 
     @Test
     void searchOnCDWithoutTitleShouldReturnEmptyList(){
-        
+        cd.setTracks(createTrackList(NUMBER_OF_TRACKS));
+        List<Track> tracks = cd.findTracksByTitle(TITLE2);
+        assertTrue(tracks.isEmpty());
+
+    }
+
+    @Test
+    void searchOnCDWithTwoTitlesShouldReturnListOfSizeTwo(){
+        cd.setTracks(createTrackList(2));
+        List<Track> result = cd.findTracksByTitle(TITLE);
+        assertTrue(result.size() == 2);
+        assertTrue(result.get(0).getTitle().contains(TITLE));
+        assertTrue(result.get(1).getTitle().contains(TITLE));
+
     }
 
 }
